@@ -155,4 +155,68 @@ let beagle = Object.create(Animal.prototype); // Change this line
 duck.eat(); // Should print "nom nom nom"
 beagle.eat(); // Should print "nom nom nom" 
 
+// Object Oriented Programming: Set the Child's Prototype to an Instance of the Parent
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Dog() { }
+
+// Add your code below this line
+Dog.prototype = Object.create(Animal.prototype);
+
+let beagle = new Dog();
+beagle.eat();  // Should print "nom nom nom"
+
+
+
+// Object Oriented Programming: Reset an Inherited Constructor Property /
+
+function Animal() { }
+function Bird() { }
+function Dog() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype);
+
+// Add your code below this line
+Bird.prototype.constructor = Bird;
+Dog.prototype.constructor = Dog;
+
+
+let duck = new Bird();
+let beagle = new Dog();
+
+
+// Object Oriented Programming: Add Methods After Inheritance
+
+function Animal() { }
+Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+function Dog() { }
+
+// Add your code below this line
+
+Dog.prototype = Object.create(Animal.prototype)
+
+Dog.prototype.bark = () => {
+    console.log("Woof!")
+}
+
+
+// Add your code above this line
+
+let beagle = new Dog();
+
+beagle.eat(); // Should print "nom nom nom"
+beagle.bark(); // Should print "Woof!"
+
+
+
 
