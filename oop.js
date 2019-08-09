@@ -95,6 +95,64 @@ function Dog(name) {
     }
   };
 
+//   Object Oriented Programming: Understand Where an Object’s Prototype Comes From
 
-
+function Dog(name) {
+    this.name = name;
+  }
   
+  let beagle = new Dog("Snoopy");
+  
+  // Add your code below this line
+  
+  Dog.prototype.isPrototypeOf(beagle)
+
+
+//   Object Oriented Programming: Use Inheritance So You Don't Repeat Yourself
+function Cat(name) {
+    this.name = name; 
+  }
+  
+  Cat.prototype = {
+    constructor: Cat
+     }
+  
+  
+  function Bear(name) {
+    this.name = name; 
+  }
+  
+  Bear.prototype = {
+    constructor: Bear
+  };
+  
+  function Animal() { }
+  
+  Animal.prototype = {
+    constructor: Animal,
+    eat: function() {
+      console.log("nom nom nom");
+    }
+    
+  };
+
+//   Object Oriented Programming: Inherit Behaviors from a Supertype
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal, 
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+// Add your code below this line
+
+let duck = Object.create(Animal.prototype); // Change this line
+let beagle = Object.create(Animal.prototype); // Change this line
+
+duck.eat(); // Should print "nom nom nom"
+beagle.eat(); // Should print "nom nom nom" 
+
+
