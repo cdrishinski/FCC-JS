@@ -45,3 +45,18 @@ function House(numBedrooms) {
       ownProps.push(property)
     }
   }
+
+  function Dog(name) {
+    this.name = name;
+  }
+  
+//   Object Oriented Programming: Understand the Constructor Property
+  // Add your code below this line
+  function joinDogFraternity(candidate) {
+    if( candidate.constructor === Dog) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
