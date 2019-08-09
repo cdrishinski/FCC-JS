@@ -60,3 +60,19 @@ function House(numBedrooms) {
     }
   }
   
+
+//   Object Oriented Programming: Change the Prototype to a New Object
+  function Dog(name) {
+    this.name = name; 
+  }
+  
+  Dog.prototype = {
+    // Add your code below this line
+    numLegs: 4,
+    eat: () => {
+      console.log("chew, chew, chew")
+    },
+    describe: () => {
+      console.log("My name is " + this.name)
+    }
+  };
