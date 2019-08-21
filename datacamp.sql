@@ -14,3 +14,36 @@ FROM HumanResources.Department
 -- SHOW ME ALL THE GROUPS
 
 SELECT GroupName FROM HumanResources.Department
+
+-- SHOW ME ALL THE DISTINCT GROUPS
+
+SELECT DISTINCT GroupName FROM HumanResources.Department
+
+--SELECT RECORDS WITH MANUFACTURING IN THEM
+
+SELECT Name, GroupName from HumanResources.Department
+    WHERE GroupName Like 'MANUFACTURING'
+
+-- GIVE ME ALL THE EMPLOYEES FROM THE EMPLOYEE TABLE
+
+SELECT * FROM HumanResources.Employee
+
+--GIVE ME A LIST OF ALL EMPLOYEE WHO HAVE ORGLEVEL OF 2
+SELECT * FROM HumanResources.Employee WHERE OrganizationLevel = 2
+
+--GIVE ME A LIST OF ALL EMPLOYEES WHO HAVE ORGLEVEL = 2 OR 3
+SELECT * FROM HumanResources.Employee WHERE OrganizationLevel IN (2,3)
+
+--GIVE ME A LIST OF EMPLOYEES WHO HAVE A TITLE OF FACILITIES MANAGER
+SELECT * FROM HumanResources.Employee WHERE JobTitle LIKE 'Facilities Manager'
+
+--GIVE ME ALL EMPLOYEES WHO HAVE THE WORD CONTROL IN THEIR TITLE
+
+SELECT * FROM HumanResources.Employee WHERE JobTitle LIKE '%Control%'
+
+--GIVE ME ALL EMPLOYEES BORN AFTER JAN 1, 1980
+SELECT * FROM HumanResources.Employee WHERE BirthDate > '1/1/1980' 
+
+--GIVE ME ALL EMPLOYEES BORN BETWEEN JAN 1, 1970 AND JAN 1, 1980
+SELECT * FROM HumanResources.Employee WHERE BirthDate > '1/1/1970' AND BirthDate < '1/1/1980'
+SELECT * FROM HumanResources.Employee WHERE BirthDate BETWEEN '1/1/1970' AND '1/1/1980'
