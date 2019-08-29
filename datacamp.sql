@@ -379,3 +379,13 @@ WHERE FirstName = 'ken'
 
 select top 10 * from person.Person
 select top 10 * from person.StateProvince
+
+create TABLE A_friends(
+    FriendID int NOT NULL,
+    FName VARCHAR(20) NOT NULL,
+    LName VARCHAR(20) NOT NULL,
+    Phone INT,
+    Email VARCHAR(30),
+    DoB DATE,
+    PRIMARY KEY (FriendID)
+)
