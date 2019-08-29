@@ -371,3 +371,11 @@ SELECT LEN('     MYTEST     ')
 SELECT LTRIM('    MYEXT       ')
 --RTRIM - REMOVE SPACES ON RIGHT OF TEXT
 SELECT RTRIM('    MYEXT       ')
+
+use AdventureWorks2014 
+
+select * from person.Person
+WHERE FirstName = 'ken'
+
+select top 10 * from person.Person
+select top 10 * from person.StateProvince
