@@ -548,6 +548,33 @@ EXEC @returnvalue = myFirstReturningSP
 select @returnvalue
 
 
+--CREATE UPDATE TRIGER AND SEND EMAIL
+
+select * from Sales.SpecialOffer
+
+CREATE TRIGGER TRIGGER_QUIZ
+ON SALES.SpecialOffer
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (select 1 from inserted where DiscountPct > .01)
+    BEGIN
+        EXEC msdb.dbo.sp_send_dbmail
+            @recipients = 'clark@clark.com',
+            @profile_name = 'default',
+            @subject = 'Pct change',
+            @body = 'Something changed'
+    END
+END
+GO
+
+
+update sales.SpecialOffer
+set DiscountPct = 0.4
+where SpecialOfferID = 1
+
 
 
 
