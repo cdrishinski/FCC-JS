@@ -390,7 +390,21 @@ create TABLE A_friends(
     PRIMARY KEY (FriendID)
 )
 
+SELECT * FROM HumanResources.Department
+
+CREATE VIEW V_HR
+AS SELECT DEPARTMENTID, GROUPNAME
+FROM HumanResources.Department
 
 SELECT TOP (1000) [DEPARTMENTID]
       ,[GROUPNAME]
   FROM [AdventureWorks2014].[dbo].[V_HR]
+
+  CREATE VIEW NASalesQuota
+AS
+SELECT [Name], [Group], [SalesQuota], [Bonus]
+FROM AdventureWorks2014.sales.SalesTerritory A INNER JOIN sales.salesperson B
+ON a.TerritoryID = b.TerritoryID
+WHERE [Group] LIKE 'NORTH AMERICA'
+
+select * FROM NASalesQuota
