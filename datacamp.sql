@@ -485,6 +485,73 @@ VALUES ('CLARK', 'D')
 
 SELECT * FROM COMP_COLUMNS
 
+------------------------------------
+-------STORED PROCEDURES-------------
+-------------------------------------
+
+CREATE PROCEDURE MyTestProc
+AS
+SET NOCOUNT ON --TELLS YOU NUMBER OF ROWS AFFECTED IN MESSAGES TAB
+SELECT * FROM HumanResources.Shift
+
+
+EXECUTE MyTestProc
+
+CREATE PROCEDURE MyTestProc2
+AS
+SET NOCOUNT OFF --TELLS YOU NUMBER OF ROWS AFFECTED IN MESSAGES TAB
+SELECT * FROM HumanResources.Shift
+
+EXEC MyTestProc2
+
+DROP PROC MyTestProc2
+
+----USING PARAMETERS IN PROCS-------
+CREATE PROCEDURE MyFirstParamProcedure
+@Param_Name VARCHAR(30)
+as
+set NOCOUNT ON
+select * from HumanResources.Shift
+where Name = @Param_Name
+
+EXEC MyFirstParamProcedure @Param_Name = 'Day'
+--EXEC MyFirstParamProcedure 'Day' also works
+
+CREATE PROCEDURE MyFirstParamProcedure2
+@Param_Name VARCHAR(30) = 'EVENING' --SETS DEFAULT VALUE IF NO PARAM IS PASSED
+as
+set NOCOUNT ON
+select * from HumanResources.Shift
+where Name = @Param_Name
+
+EXEC MyFirstParamProcedure2
+
+-----OUTPUT PARAMETER---------
+--STORE RESULTS INTO PARAMETER THEN ACCES FROM OUTPUT
+CREATE PROC MyOutputSP
+@TopShift VARCHAR(50) OUTPUT
+AS
+set @TopShift = (select top(1) shiftID from HumanResources.Shift)
+
+DECLARE @outputresult VARCHAR(50)
+EXEC MyOutputSP @outputresult output
+SELECT @outputresult
+
+
+--returning values from stored procedures------
+CREATE PROC myFirstReturningSP
+AS
+RETURN 12
+
+DECLARE @returnvalue INT
+EXEC @returnvalue = myFirstReturningSP
+select @returnvalue
+
+
+
+
+
+
 
 
 
