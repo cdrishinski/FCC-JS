@@ -576,7 +576,30 @@ set DiscountPct = 0.4
 where SpecialOfferID = 1
 
 
+-- Create a table similar to Purchasing.Vendor with an extra column. Call that column VendorCode.
+-- The vendorCode should in the following format:
+-- [CreditRating]_[PreferredVendorStatus]_2*CreditRating
 
+select * from purchasing.vendor 
+
+select * INTO CompColQuiz
+from Purchasing.Vendor
+
+select * from CompColQuiz
+
+alter table CompColQuiz
+add VendorCode as ([CreditRating]+[PreferredVendorStatus]+2*CreditRating)
+
+-- Create a table similar to Production.ProductCostHistory and add an extra column to compute
+-- the StandardCost in Euros i.e Standardcost * 0.89. Call this column StandardCostEuros
+
+select * into CompColQuiz2
+FROM Production.ProductCostHistory
+
+select * from CompColQuiz2
+
+ALTER Table CompColQuiz2
+add StandardCostEuros as (StandardCost * 0.89)
 
 
 
