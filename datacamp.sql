@@ -601,7 +601,33 @@ select * from CompColQuiz2
 ALTER Table CompColQuiz2
 add StandardCostEuros as (StandardCost * 0.89)
 
+-- What is the difference between a stored procedure and a trigger? 
+--Stored procedure is duplicated code to be executed when called.
+--a trigger executes automatically based on an event that occurs.  
 
+-- 2. Write a stored procedure to return the # of employees and department name when group name
+-- is passed as a parameter. 
+-- hint: check humanresource.employee, humanresources.department,
+-- humanresources.employeedepartmenthistory 
+
+select * from HumanResources.Employee
+select * from HumanResources.Department
+select * from HumanResources.EmployeeDepartmentHistory
+
+select distinct jobtitle, count(*) from HumanResources.Employee group by JobTitle
+
+CREATE PROCEDURE ProcQuiz1
+AS
+SET NOCOUNT ON 
+select distinct JobTitle, count(*) 
+    from HumanResources.Employee
+    group by JobTitle
+
+exec procquiz1
+
+-- 3. Explore the &quot;WITH RECOMPILE&quot; option. 
+-- 4. What is the difference between &quot;SET NOCOUNT ON&quot; and &quot;SET NOCOUNT OFF&quot;
+--nocount on prevents the message being displayed that shows how many rows were affected.  nocount off is the opposite and shows how many rows were affected.
 
 
 
