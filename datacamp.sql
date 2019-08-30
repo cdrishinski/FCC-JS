@@ -463,3 +463,29 @@ END
 GO
 
 CREATE TABLE MYDEMOTABLE( COL1 VARCHAR(90))
+
+
+-- DROP THE TRIGGER-----
+DROP TRIGGER IF EXISTS DEMO_DBLEVELTRIGGER
+ON DATABASE
+
+
+-------------------------------------
+-------COMPUTED COLUMNS--------------
+-------------------------------------
+CREATE TABLE COMP_COLUMNS (
+    firstname VARCHAR(40),
+    lastname VARCHAR(40),
+    fullname as firstname + ' ' +lastname
+                )
+
+
+INSERT INTO COMP_COLUMNS
+VALUES ('CLARK', 'D')
+
+SELECT * FROM COMP_COLUMNS
+
+
+
+
+
