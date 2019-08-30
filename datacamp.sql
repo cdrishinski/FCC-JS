@@ -400,6 +400,15 @@ SELECT TOP (1000) [DEPARTMENTID]
       ,[GROUPNAME]
   FROM [AdventureWorks2014].[dbo].[V_HR]
 
+  -- VIEWS (US VIEW)
+CREATE VIEW MyCustomUSView
+AS  
+SELECT * FROM AdventureWorks2014.SALES.SalesTerritory
+WHERE CountryRegionCode LIKE 'US'
+
+SELECT * FROM MyCustomUSView
+
+
   CREATE VIEW NASalesQuota
 AS
 SELECT [Name], [Group], [SalesQuota], [Bonus]
@@ -408,3 +417,49 @@ ON a.TerritoryID = b.TerritoryID
 WHERE [Group] LIKE 'NORTH AMERICA'
 
 select * FROM NASalesQuota
+
+------TRIGGERS--------
+
+
+-------------------------------------
+----------TABLE LEVEL TRIGGER--------
+-------------------------------------
+SELECT * FROM HumanResources.Shift
+
+
+--WHEN INSERT OCCURS ON HUMANRESOURCES.SHIFT, NOTIFY MANAGEMENT BY ROLLING IT BACK
+
+CREATE TRIGGER DemoTrigger
+on HumanResources.Shift
+after insert
+as
+begin
+PRINT 'Insert is not allowed.  You need approval'
+ROLLBACK TRANSACTION
+END
+GO
+
+----TEST THE ABOVE TRIGGER
+INSERT INTO HumanResources.Shift ([Name], [STARTTIME], [ENDTIME], [MODIFIEDDATE])
+VALUES (
+    'RAKESH2',
+    '07:00:00',
+    '8:00:00',
+    getdate()
+    )
+
+-------------------------------------
+-------DATABASE LEVEL TRIGGER--------
+-------------------------------------
+
+CREATE TRIGGER DEMO_DBLEVELTRIGGER
+ON DATABASE
+AFTER CREATE_TABLE
+AS
+BEGIN
+PRINT 'CREATION OF NEW TABLES IS NOT ALLOWED'
+ROLLBACK TRANSACTION
+END
+GO
+
+CREATE TABLE MYDEMOTABLE( COL1 VARCHAR(90))
