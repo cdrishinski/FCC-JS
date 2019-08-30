@@ -389,3 +389,8 @@ create TABLE A_friends(
     DoB DATE,
     PRIMARY KEY (FriendID)
 )
+
+
+SELECT TOP (1000) [DEPARTMENTID]
+      ,[GROUPNAME]
+  FROM [AdventureWorks2014].[dbo].[V_HR]
