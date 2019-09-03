@@ -630,5 +630,163 @@ exec procquiz1
 --nocount on prevents the message being displayed that shows how many rows were affected.  nocount off is the opposite and shows how many rows were affected.
 
 
+-- What is the difference between a stored procedure and a trigger? 
+--Stored procedure is duplicated code to be executed when called.
+--a trigger executes automatically based on an event that occurs.  
+
+-- 2. Write a stored procedure to return the # of employees and department name when group name
+-- is passed as a parameter. 
+-- hint: check humanresource.employee, humanresources.department,
+-- humanresources.employeedepartmenthistory 
+
+select * from HumanResources.Employee
+select * from HumanResources.Department
+select * from HumanResources.EmployeeDepartmentHistory
+
+select distinct jobtitle, count(*) from HumanResources.Employee group by JobTitle
+
+CREATE PROCEDURE ProcQuiz1
+AS
+SET NOCOUNT ON 
+select distinct JobTitle, count(*) 
+    from HumanResources.Employee
+    group by JobTitle
+
+exec procquiz1
+
+-- 3. Explore the &quot;WITH RECOMPILE&quot; option. 
+-- 4. What is the difference between &quot;SET NOCOUNT ON&quot; and &quot;SET NOCOUNT OFF&quot;
+--nocount on prevents the message being displayed that shows how many rows were affected.  nocount off is the opposite and shows how many rows were affected.
+
+
+
+
+------------------------------------
+-------USER DEFINED FUNCTIONS--------
+-------------------------------------
+
+
+--SCALAR FUNCTIONS (MOST BASIC TYPE)---
+
+
+SELECT * FROM SALES.SalesTerritory
+
+CREATE FUNCTION YTDSALES()
+RETURNS MONEY
+AS 
+BEGIN
+DECLARE @YTDSALES MONEY
+SELECT @YTDSALES = SUM(SALESYTD) FROM SALES.SalesTerritory
+RETURN @YTDSALES
+END
+
+--TO CALL FUNCTION  CREATE VARIABLE WITH DATA TYPE
+DECLARE @YTDRESULTS AS MONEY
+--QUERY THAT VARIABLE BY ASSIGNING WHAT THE FUNCTION IS RETURNING TO IT
+SELECT @YTDRESULTS = DBO.YTDSALES()
+--PRINT THAT VARIABLE
+PRINT @YTDRESULTS
+
+DROP FUNCTION YTDSALES
+
+---PARAMETERIZED FUNCTIONS-----
+CREATE FUNCTION YTD_GROUP (@GROUP VARCHAR(50))
+
+RETURNS MONEY
+AS
+BEGIN
+DECLARE @YTDSALES AS MONEY
+SELECT @YTDSALES = SUM(SALESYTD)
+FROM Sales.SalesTerritory
+WHERE [GROUP] = @GROUP
+RETURN @YTDSALES
+END
+
+DECLARE @RESULTS MONEY
+SELECT @RESULTS = DBO.YTD_GROUP('NORTH AMERICA')
+PRINT @RESULTS
+
+DROP FUNCTION YTD_GROUP
+
+-----TABLE VALUE FUNCTION---------
+CREATE FUNCTION ST_TABLEVALUED (@TERRITORYID INT)
+    RETURNS TABLE
+    AS  
+    RETURN SELECT NAME, COUNTRYREGIONCODE, [GROUP], SALESYTD
+    FROM SALES.SalesTerritory
+    WHERE TERRITORYID = @TERRITORYID
+
+SELECT * FROM ST_TABLEVALUED(7)
+
+CREATE FUNCTION udf2 (@TERRITORYID INT)
+    RETURNS TABLE
+    AS  
+    RETURN SELECT NAME, COUNTRYREGIONCODE, [GROUP], SALESYTD
+    FROM SALES.SalesTerritory
+    WHERE TERRITORYID = @TERRITORYID
+    exec procquiz1
+
+SELECT * FROM ST_TABLEVALUED(7)
+
+USE [AdventureWorks2014]
+GO
+/****** Object:  Table [dbo].[Circle]    Script Date: 8/17/2015 6:24:00 PM ******/ 
+SET ANSI_NULLS ON 
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+CREATE TABLE [dbo].[Circle]( 
+[CircleID] [int] NULL, 
+[Radius] [float] NULL, 
+[Area] [float] NULL 
+) ON [PRIMARY] 
+ 
+ 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (1, 3, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (2, 5, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (3, 3.2, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (4, 5.76, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (5, 3.22, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (6, 4, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (7, 3.66, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (8, 9.22332, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (9, 12, NULL) 
+GO
+INSERT [dbo].[Circle] ([CircleID], [Radius], [Area]) VALUES (10, 10, NULL) 
+GO
+
+select * FROM [dbo].[Circle]
+
+create FUNCTION areaFunc()
+returns FLOAT
+AS
+BEGIN
+declare @AREA as FLOAT
+select @AREA = radius * radius * 3.14
+    FROM dbo.Circle
+return @AREA
+END
+GO
+
+--TO CALL FUNCTION  CREATE VARIABLE WITH DATA TYPE
+DECLARE @X AS FLOAT
+--QUERY THAT VARIABLE BY ASSIGNING WHAT THE FUNCTION IS RETURNING TO IT
+SELECT @X = DBO.AREAFUNC()
+--PRINT THAT VARIABLE
+
+update [dbo].[Circle]
+SET Area = @X
+WHERE CircleID
+
+
 
 
