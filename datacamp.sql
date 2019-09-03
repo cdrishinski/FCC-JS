@@ -854,5 +854,45 @@ BEGIN CATCH
 END CATCH
 
 
+---COMMON TABLE EXPRESSION (CTE)---
+SELECT * FROM Sales.SalesTerritory
+
+WITH CTE_SALESTERR
+AS 
+(
+    SELECT NAME, COUNTRYREGIONCODE  FROM Sales.SalesTerritory
+)
+
+SELECT * FROM CTE_SALESTERR
+WHERE NAME LIKE 'NORTH%';
+
+----GROUPING SETS-------
+
+--GROUP BY
+SELECT * FROM Sales.SalesTerritory
+
+SELECT [NAME], CountryRegionCode, [GROUP], SUM(SALESYTD) 
+FROM Sales.SalesTerritory
+GROUP BY GROUPING SETS
+(
+    (Name),
+    (Name, CountryRegionCode),
+    (Name, CountryRegionCode,[Group])
+)
+
+----ROLLUP
+SELECT NAME, COUNTRYREGIONCODE, [GROUP], SUM(SALESYTD)
+FROM Sales.SalesTerritory
+GROUP BY ROLLUP (
+    (Name, CountryRegionCode,[Group])
+)
+
+--CUBE
+SELECT NAME, COUNTRYREGIONCODE, [GROUP], SUM(SALESYTD)
+FROM Sales.SalesTerritory
+GROUP BY CUBE (
+    (Name, CountryRegionCode,[Group])
+)
+
 
 
