@@ -939,7 +939,53 @@ FROM HumanResources.EmployeePayHistory
 
 
 
+--------------------------
+--------XML DATATYPES-----
+--------------------------
 
+CREATE TABLE SAMPLEXMLTABLE (XMLDATA XML)
+
+SELECT * FROM SAMPLEXMLTABLE
+
+insert into dbo.SAMPLEXMLTABLE (XMLDATA)
+values (
+    '<note>
+    <to>Tove</to>
+    <from>Jani</from>
+    <heading>Reminder</heading>
+    <body>Dont forget me this weekend!</body>
+    </note>')
+
+select * from Sales.SalesTerritory
+for xml auto, elements, root ('Salesterritory')
+
+select * from Sales.SalesTerritory
+for xml RAW, elements, root ('Salesterritory')
+
+select xmldata.query('./note/to') as [to]
+from dbo.SAMPLEXMLTABLE
+
+select xmldata.value('(/note/to)[1]', 'varchar(10)') as [to]
+from dbo.SAMPLEXMLTABLE
+
+select top 10 territoryid from Sales.SalesTerritory
+for xml auto, elements, root('SalesTerritory')
+
+select * from Sales.SalesTerritory
+for xml RAW, elements, root ('Salesterritory')
+
+DECLARE @xmlhandle int
+DECLARE @xmldocument XML
+
+set @xmldocument = (select * from sales.SalesTerritory
+    for xml auto, elements, root('SalesTerritory'))
+
+exec sp_xml_preparedocument @xmlhandle OUTPUT, @xmldocument
+
+select * from openxml(@xmlhandle, '/SalesTerritory/Sales.SalesTerritory', 2)
+with (TerritoryID int, SalesYTD money)
+
+exec sp_xml_removedocument @xmlhandle
 
 
 
