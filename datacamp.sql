@@ -1040,3 +1040,18 @@ FROM GUIDES;
 
 SELECT DISTINCT GUIDES_TITLE, GUIDES_USERS_ID, GUIDES_REVENUE
 FROM GUIDES;
+
+USE devcamp_sql_course_schema;
+
+SELECT * FROM USERS
+WHERE USERS_ID = 199;
+
+BEGIN;
+delete from users
+where users_id = 199;
+
+ROLLBACK;
+
+
+
+
