@@ -1061,4 +1061,12 @@ select * from guides
 where guides_revenue not between 600 and 1000;
 
 
+USE devcamp_sql_course_schema;
+
+insert into guides (guides_revenue, guides_users_id, guides_title)
+values (5000, 1, 'Another One of My Posts');
+
+select *
+from guides 
+where guides_title like '%My%';
 
