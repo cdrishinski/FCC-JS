@@ -1004,3 +1004,22 @@ where addresses_state = 'ny'
 AND addresses_city = 'manhattan';
 
 
+USE devcamp_sql_course_schema;
+
+UPDATE users 
+set users_email = 'update@test.com'
+where users_id = 2;
+
+SELECT * FROM USERS;
+
+SELECT * FROM GUIDES;
+
+UPDATE GUIDES
+SET guides_title = 'SOMETHING ELSE'
+WHERE GUIDES_TITLE = 'ANOTHER POST'
+AND GUIDES_USERS_ID = 2;
+
+UPDATE GUIDES
+SET guides_title = 'SOMETHING ELSE AGAIN'
+WHERE GUIDES_TITLE = 'SOMETHING ELSE'
+AND GUIDES_USERS_ID = 1;
