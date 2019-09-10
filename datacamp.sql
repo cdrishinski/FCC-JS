@@ -987,5 +987,20 @@ with (TerritoryID int, SalesYTD money)
 
 exec sp_xml_removedocument @xmlhandle
 
+use devcamp_sql_course_schema;
+
+select * 
+from users
+where users_email = 'kristine@test.com'
+OR users_email = 'jordan@test.com';
+
+select addresses_city, addresses_state
+from addresses
+where addresses_state = 'ny';
+
+select * 
+from addresses
+where addresses_state = 'ny'
+AND addresses_city = 'manhattan';
 
 
