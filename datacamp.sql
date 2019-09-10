@@ -1052,6 +1052,13 @@ where users_id = 199;
 
 ROLLBACK;
 
+USE devcamp_sql_course_schema;
+
+select * from guides
+where guides_revenue between 600 and 1000;
+
+select * from guides
+where guides_revenue not between 600 and 1000;
 
 
 
