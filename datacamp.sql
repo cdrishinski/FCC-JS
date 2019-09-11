@@ -1070,3 +1070,18 @@ select *
 from guides 
 where guides_title like '%My%';
 
+USE devcamp_sql_course_schema;
+-- subqueries 
+select guides_title, guides_revenue
+from guides
+where guides_revenue = (
+	select max(cast(guides_revenue as unsigned))
+	from guides
+    )
+
+
+select min(guides_revenue)
+from guides;
+    
+    
+    
