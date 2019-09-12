@@ -1150,3 +1150,14 @@ SELECT
 g.guides_title, g.guides_revenue
 from guides g
 where g.guides_revenue > 600;
+
+use devcamp_sql_course_schema;
+
+SELECT
+	guides_title,
+    CASE
+		WHEN guides_revenue > 1000 THEN "BEST SELLER"
+        WHEN guides_revenue < 600 THEN 'Not Displayed'
+        ELSE 'Average Sellers'
+	END AS 'Status'
+FROM guides;
