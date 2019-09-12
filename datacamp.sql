@@ -1124,3 +1124,8 @@ guides_qty,
 guides_revenue / guides_qty as "Rev/Qty"
 FROM guides;
 
+use devcamp_sql_course_schema;
+
+SELECT 'Email:', users_email, 'Name:', users_name
+from users;
+
