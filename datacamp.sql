@@ -1091,7 +1091,7 @@ from addresses
 group by addresses_state;
 
 select addresses_city, count(addresses_city)
-from addresses
+FROM addresses
 group by addresses_city;
 
 select * from guides;
@@ -1099,3 +1099,16 @@ select * from guides;
 select guides_users_id, count(guides_title), sum(guides_revenue)
 from guides
 group by guides_users_id;
+
+
+use devcamp_sql_course_schema;
+
+select * from guides;
+
+set SQL_SAFE_UPDATES = 0;
+
+BEGIN;
+UPDATE GUIDES
+SET guides_qty = rand()*1000;
+
+rollback;
