@@ -1129,3 +1129,12 @@ use devcamp_sql_course_schema;
 SELECT 'Email:', users_email, 'Name:', users_name
 from users;
 
+use devcamp_sql_course_schema;
+
+SELECT 
+addresses_street_one AS Street,
+addresses_street_two AS 'Street Two',
+addresses_city AS 'City',
+addresses_state AS 'State',
+addresses_postal_code AS 'Zip Code'
+from addresses;
