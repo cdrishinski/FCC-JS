@@ -1084,4 +1084,18 @@ select min(guides_revenue)
 from guides;
     
     
-    
+    use devcamp_sql_course_schema;
+
+select addresses_state, count(addresses_state)
+from addresses
+group by addresses_state;
+
+select addresses_city, count(addresses_city)
+from addresses
+group by addresses_city;
+
+select * from guides;
+
+select guides_users_id, count(guides_title), sum(guides_revenue)
+from guides
+group by guides_users_id;
