@@ -1112,3 +1112,15 @@ UPDATE GUIDES
 SET guides_qty = rand()*1000;
 
 rollback;
+
+use devcamp_sql_course_schema;
+
+select * from guides;
+
+SELECT 
+guides_title, 
+guides_revenue,
+guides_qty,
+guides_revenue / guides_qty as "Rev/Qty"
+FROM guides;
+
