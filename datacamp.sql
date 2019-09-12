@@ -1138,3 +1138,15 @@ addresses_city AS 'City',
 addresses_state AS 'State',
 addresses_postal_code AS 'Zip Code'
 from addresses;
+
+use devcamp_sql_course_schema;
+
+SELECT 
+guides_title, guides_revenue
+from guides
+where guides_revenue > 600;
+
+SELECT 
+g.guides_title, g.guides_revenue
+from guides g
+where g.guides_revenue > 600;
