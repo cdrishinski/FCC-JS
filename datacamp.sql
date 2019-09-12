@@ -1180,3 +1180,18 @@ from guides g
 join users u
 on g.guides_users_id = u.users_id
 ORDER BY g.guides_revenue DESC;
+
+use devcamp_sql_course_schema;
+
+SELECT *
+FROM GUIDES G
+JOIN USERS U
+ON G.GUIDES_USERS_ID - U.USERS_ID
+WHERE U.USERS_NAME = 'TIFFANY';
+
+SELECT *
+FROM GUIDES G
+JOIN USERS U
+ON G.GUIDES_USERS_ID - U.USERS_ID
+WHERE G.GUIDES_REVENUE > 700
+AND u.users_name = 'tiffany';
