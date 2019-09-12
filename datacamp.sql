@@ -1161,3 +1161,22 @@ SELECT
         ELSE 'Average Sellers'
 	END AS 'Status'
 FROM guides;
+
+use devcamp_sql_course_schema;
+
+
+
+select *
+from guides 
+inner join users
+on guides.guides_users_id = users.users_id;  
+
+SELECT 
+g.guides_title, 
+g.guides_revenue, 
+u.users_name, 
+u.users_email
+from guides g
+join users u
+on g.guides_users_id = u.users_id
+ORDER BY g.guides_revenue DESC;
