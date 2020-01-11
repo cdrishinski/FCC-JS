@@ -200,7 +200,7 @@ console.log(rating);
 
 // Functional Programming: Use the map Method to Extract Data from an ArrayPassed
 
-// the global variable
+/// the global variable
 var watchList = [
   {
     "Title": "Inception",
@@ -316,10 +316,10 @@ var watchList = [
 
 // Add your code below this line
 
-var ratings = [];
-for(var i=0; i < watchList.length; i++){
-  ratings.push({title: watchList[i]["Title"],  rating: watchList[i]["imdbRating"]});
-}
+const ratings = watchList.map(val => ({
+  title: val['Title'],
+  rating: val['imdbRating']
+  }))
 
 // Add your code above this line
 
