@@ -499,5 +499,18 @@ function nonMutatingSplice(cities) {
 }
 var inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 nonMutatingSplice(inputCities);
+
+// Functional Programming: Combine Two Arrays Using the concat MethodPassed
+
+function nonMutatingConcat(original, attach) {
+  // Add your code below this line
+
+
+  // Add your code above this line
+}
+var first = [1, 2, 3];
+var second = [4, 5];
+nonMutatingConcat(first, second);
+
  
 
