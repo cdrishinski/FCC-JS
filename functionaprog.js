@@ -452,3 +452,52 @@ var filteredList = watchList.filter(movie => movie.imdbRating >= 8)
 // Add your code above this line
 
 console.log(filteredList);
+
+
+// Functional Programming: Implement the filter Method on a Prototype
+
+// the global Array
+var s = [23, 65, 98, 5];
+
+Array.prototype.myFilter = function (callback) {
+  var newArray = [];
+  // Add your code below this line
+  this.forEach(item => {
+    if (callback(item)) {
+      newArray.push(item)
+    }
+  })
+  console.log(newArray)
+  // Add your code above this line
+  return newArray;
+
+};
+
+var new_s = s.myFilter(function (item) {
+  return item % 2 === 1;
+});
+
+// Functional Programming: Return Part of an Array Using the slice Method
+
+function sliceArray(anim, beginSlice, endSlice) {
+  // Add your code below this line
+  const newArr = anim.slice(beginSlice, endSlice)
+  return newArr;
+  // Add your code above this line
+}
+var inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
+sliceArray(inputAnim, 1, 3);
+
+// Functional Programming: Remove Elements from an Array Using slice Instead of splice
+function nonMutatingSplice(cities) {
+  // Add your code below this line
+  const newArr = cities.slice(0, 3)
+  console.log(newArr)
+  return newArr;
+
+  // Add your code above this line
+}
+var inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+nonMutatingSplice(inputCities);
+ 
+
