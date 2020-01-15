@@ -672,6 +672,30 @@ function alphabeticalOrder(arr) {
 }
 alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
 
+// Functional Programming: Return a Sorted Array Without Changing the Original Array
+
+var globalArray = [5, 6, 3, 2, 9];
+function nonMutatingSort(arr) {
+  // Add your code below this line
+  const newArr = [...arr]
+  return newArr.sort()
+
+  // Add your code above this line
+}
+nonMutatingSort(globalArray);
+
+// Functional Programming: Split a String into an Array Using the split Method
+
+function splitify(str) {
+  // Add your code below this line
+  return str.split(/\W/)
+
+  // Add your code above this line
+}
+splitify("Hello World,I-am code");
+
+
+
 
 
  
