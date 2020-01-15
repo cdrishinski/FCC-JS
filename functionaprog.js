@@ -695,7 +695,30 @@ function splitify(str) {
 splitify("Hello World,I-am code");
 
 
+// Functional Programming: Combine an Array into a String Using the join Method
+
+function sentensify(str) {
+  // Add your code below this line
+  console.log(str.split(/\W/).join(" "))
+  return str.split(/\W/).join(" ")
+
+  // Add your code above this line
+}
+sentensify("May-the-force-be-with-you");
 
 
+// Functional Programming: Apply Functional Programming to Convert Strings to URL Slugs
+
+// the global variable
+var globalTitle = "Winter Is Coming";
+
+// Add your code below this line
+function urlSlug(title) {
+    return title.split(/\W/).filter(item => item !== "").join('-').toLowerCase()
+
+}
+// Add your code above this line
+
+var winterComing = urlSlug(globalTitle); // Should be "winter-is-coming"
 
  
