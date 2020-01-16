@@ -18,3 +18,26 @@ function sumAll(arr) {
    }
    
    sumAll([1, 5]);
+
+//    Intermediate Algorithm Scripting: Diff Two Arrays
+
+function diffArray(arr1, arr2) {
+    var newArr = [];
+    // Same, same; but different.
+    
+    arr1.map((val) => {
+      console.log(val)
+      !arr2.includes(val) ? newArr.push(val) : val
+      console.log(newArr)
+    })
+    arr2.map((val) => {
+      console.log(val)
+      !arr1.includes(val) ? newArr.push(val) : val
+      console.log(newArr)
+    })
+  
+    return newArr;
+  }
+  
+  diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+  
