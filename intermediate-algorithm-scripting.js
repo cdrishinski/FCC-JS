@@ -41,3 +41,31 @@ function diffArray(arr1, arr2) {
   
   diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
   
+//   Intermediate Algorithm Scripting: Seek and Destroy
+
+function destroyer(arr) {
+    // Remove all the values
+    let arrayOfArgs = [...arguments]
+    let list = arrayOfArgs[0];
+    let destroy = [];
+  
+    for (var i = 1; i < arrayOfArgs.length; i++) {
+      destroy.push(arrayOfArgs[i])
+    }
+  
+    destroy.map((val, ind) => {
+      list.map((val2, ind2) => {
+        console.log(val, val2)
+        console.log(val === val2 ? true : false)
+        val === val2 ? list.splice(list[ind2]) : val
+      }
+      )
+    })
+    console.log(list)
+    return list;
+  }
+  
+  destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+  
+
+
