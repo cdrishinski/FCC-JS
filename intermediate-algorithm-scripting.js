@@ -55,14 +55,21 @@ function destroyer(arr) {
     destroy.map((val, ind) => {
       list.map((val2, ind2) => {
         console.log(val, val2)
-        console.log(val === val2 ? true : false)
-        val === val2 ? list.splice(ind2, 1) : val
+  
+        val === val2 ? delete list[ind2] : val
       }
       )
     })
-    console.log(list)
-    return list;
+  
+    return list.filter(function (el) {
+      return el != "";
+    });
   }
   
-  destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+  
+  destroyer([3, 5, 1, 2, 2], 1, 2, 3);
+
+  
+
+
   
