@@ -89,5 +89,20 @@ function whatIsInAName(collection, source) {
   
   whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
   
+//   Intermediate Algorithm Scripting: Spinal Tap Case
 
+function spinalCase(str) {
+    // "It's such a fine line between stupid, and clever."
+    // --David St. Hubbins
+    // Replace low-upper case to low-space-uppercase
+    str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+    // Split on whitespace and underscores and join with dash
+    return str
+      .toLowerCase()
+      .split(/(?:_| )+/)
+      .join("-");
+  }
+  
+  spinalCase("This-Is-Spinal-Tap");
+  
 
