@@ -120,5 +120,24 @@ function spinalCase(str) {
    
    translatePigLatin("bcd");
    
+  //  Intermediate Algorithm Scripting: Search and Replace
+
+  function myReplace(str, before, after) {
+  
+    if(/^[A-Z]/.test(before)){
+      after = after.charAt(0).toUpperCase() + after.slice(1)
+    }
+  
+  return str.replace(before, after);
+  
+   // console.log(str.split(" ").includes(before))
+  
+    
+  
+  
+  }
+  
+  myReplace("A quick brown fox Jumped over the lazy dog", "Jumped", "leaped");
+  
   
 
