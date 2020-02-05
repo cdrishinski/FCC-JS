@@ -139,5 +139,25 @@ function spinalCase(str) {
   
   myReplace("A quick brown fox Jumped over the lazy dog", "Jumped", "leaped");
   
+  // Intermediate Algorithm Scripting: DNA Pairing
+
+  function pairElement(str) {
+    const pairs = {
+      A: 'T',
+      T: 'A',
+      C: 'G',
+      G: 'C'
+    }
+  
+    let arr = str.split('')
+    console.log(arr)
+  
+    console.log(arr.map(item => [item, pairs[item]]))
+    return arr.map(item => [item, pairs[item]])
+  
+  }
+  
+  pairElement("ATCGA");
+  
   
 
