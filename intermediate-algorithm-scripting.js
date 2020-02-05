@@ -153,7 +153,10 @@ function spinalCase(str) {
     console.log(arr)
   
     console.log(arr.map(item => [item, pairs[item]]))
+
+
     return arr.map(item => [item, pairs[item]])
+    
   
   }
   
