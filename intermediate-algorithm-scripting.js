@@ -153,14 +153,22 @@ function spinalCase(str) {
     console.log(arr)
   
     console.log(arr.map(item => [item, pairs[item]]))
-
-
     return arr.map(item => [item, pairs[item]])
     
-  
   }
   
   pairElement("ATCGA");
-  
+  // Intermediate Algorithm Scripting: Missing lettersPassed
+
+  function fearNotLetter(str) {
+    for (let i = 1; i < str.length; ++i) {
+       if (str.charCodeAt(i) - str.charCodeAt(i - 1) > 1) {
+         return String.fromCharCode(str.charCodeAt(i - 1) + 1);
+       }
+     }
+   }
+   
+   fearNotLetter("abce");
+   
   
 
