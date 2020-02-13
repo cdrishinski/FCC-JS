@@ -171,4 +171,15 @@ function spinalCase(str) {
    fearNotLetter("abce");
    
   
+  //  Intermediate Algorithm Scripting: Sorted Union
+  function uniteUnique(...arr) {
+
+    let myArr = arr.flat(1)
+  
+      
+    return myArr.filter((a, b) => myArr.indexOf(a) === b);
+  }
+  
+  uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+  
 
