@@ -286,6 +286,15 @@ function spinalCase(str) {
     return n >= 3;
   });
 
+  // Intermediate Algorithm Scripting: Steamroller
+
+  function steamrollArray(arr) {
+    let flat = [].concat(...arr);
+    return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+  }
+  
+  steamrollArray([1, [2], [3, [[4]]]]);
+
   
 
 
