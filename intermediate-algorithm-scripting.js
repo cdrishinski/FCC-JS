@@ -295,6 +295,42 @@ function spinalCase(str) {
   
   steamrollArray([1, [2], [3, [[4]]]]);
 
+
+  // JavaScript Algorithms and Data Structures Projects: Palindrome Checker
+
+  function palindrome(str) {
+    const arr = str.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g,'').split('');
+  
+    const allOrNothing = [];
+    let start = 0;
+    let end = arr.length-1;
+  
+    // console.log(arr)
+  
+    arr.map(val => {
+      if(arr[start] !== arr[end]){
+        console.log('went false',arr[start], arr[end])
+        start++;
+        end--;
+        allOrNothing.push(false)
+      }
+      if (arr[start] === arr[end]) {
+        console.log('went true',arr[start], arr[end])
+        start++;
+        end--;
+        allOrNothing.push(true)
+      }
+  
+    })
+    console.log(allOrNothing.every((val) => val === true))
+    return allOrNothing.every((val) => val === true)
+  }
+  
+  
+  
+  palindrome("A man, a plan, a canal. Panama")
+  
+
   
 
 
